@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+
+  --color-surface: #0b1326;
+  --color-surface-container: #171f33;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  --color-surface-bright: #31394d;
+  --color-surface-dim: #0b1326;
+  
+  --color-primary: #7bd0ff;
+  --color-on-primary: #00354a;
+  --color-primary-container: #001a27;
+  --color-on-primary-container: #008abb;
+  
+  --color-secondary: #b7c8e1;
+  --color-on-secondary: #213145;
+  --color-secondary-container: #3a4a5f;
+  --color-on-secondary-container: #a9bad3;
+
+  --color-tertiary: #4edea3;
+  --color-on-tertiary: #003824;
+  --color-tertiary-container: #001c10;
+  --color-on-tertiary-container: #009365;
+
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #c6c6cd;
+  --color-outline: #909097;
+  --color-outline-variant: #45464d;
+
+  --animate-scan: scan 3s linear infinite;
+
+  @keyframes scan {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(400px); opacity: 0; }
+  }
+}
+
+@layer components {
+  .custom-range {
+    @apply h-1.5 bg-surface-container-highest rounded-full appearance-none cursor-pointer accent-primary;
+  }
+  .custom-range::-webkit-slider-thumb {
+    @apply w-4 h-4 rounded-full bg-primary shadow-lg shadow-primary/40 border-2 border-white cursor-pointer appearance-none transition-transform hover:scale-125;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body antialiased;
+  }
+}
+
+.glass-panel {
+  background: rgba(23, 31, 51, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.thermal-gradient-btn {
+  background: linear-gradient(135deg, #7bd0ff 0%, #008abb 100%);
+}
+
+.heat-pulse {
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
